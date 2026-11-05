@@ -1527,6 +1527,7 @@ textarea:focus {
 }
 
 .gallery-item {
+  position: relative;
   margin: 0;
   border-radius: var(--radius);
   overflow: hidden;
@@ -1545,11 +1546,21 @@ textarea:focus {
 }
 
 .gallery-item .media-cover {
-  transition: transform 700ms var(--ease);
+  transition:
+    opacity 420ms var(--ease),
+    transform 700ms var(--ease);
+}
+
+.gallery-item .media-cover.is-fading {
+  opacity: 0;
 }
 
 .gallery-item:hover .media-cover {
   transform: scale(1.05);
+}
+
+.gallery-item:hover .media-cover.is-fading {
+  transform: none;
 }
 
 .gallery-wide {
@@ -1823,6 +1834,7 @@ textarea:focus {
   .hero-frame:hover .media-cover,
   .about-hero-frame:hover .media-cover {
     transform: none;
+    opacity: 1 !important;
     transition: none !important;
   }
 }

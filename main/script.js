@@ -312,3 +312,91 @@ function setupReveal() {
 }
 
 setupReveal();
+
+/* Our work mosaic — cycle images in place (layout unchanged).
+   4s is a common portfolio / case-study slideshow interval. */
+function setupWorkSlideshow() {
+  const gallery = document.querySelector("#work .gallery");
+  if (!gallery || reduceMotion) return;
+
+  const slides = [
+    { src: "img/img14.jpg", alt: "Desktop PC repair on the workbench" },
+    { src: "img/img15.jpg", alt: "Technician assembling a desktop computer" },
+    { src: "img/img17.jpg", alt: "Cable work inside a PC tower" },
+    { src: "img/img2.jpg", alt: "Network technician working on a rack" },
+    { src: "img/img3.jpg", alt: "Structured cabling in a server room" },
+    { src: "img/img6.jpg", alt: "Patch panel and network switches" },
+    { src: "img/9.jpg", alt: "Computer training lab with workstations" },
+    { src: "img/imh10.jpg", alt: "Modern computer lab desks and monitors" },
+    { src: "img/img11.jpg", alt: "Rows of desktop computers in a lab" },
+    { src: "img/img12.jpg", alt: "IT training session in a classroom" },
+    { src: "img/img18.jpg", alt: "IT consultation with network diagrams" },
+    { src: "img/img25.jpg", alt: "CCTV security camera" },
+    { src: "img/img26.jpg", alt: "CCTV accessories and camera kit" },
+    { src: "img/img27.jpg", alt: "CCTV camera mount and install kit" },
+    { src: "img/img28.jpg", alt: "Technician refilling a printer ink cartridge" },
+    { src: "img/img30.jpg", alt: "Technician refilling a toner cartridge" },
+    { src: "img/img39.jpg", alt: "Laser toner cartridge being refilled" },
+    { src: "img/img13.jpg", alt: "Laptop repair on the workbench" },
+    { src: "img/img16.jpg", alt: "Board-level motherboard repair" },
+    { src: "img/img4.jpg", alt: "Desktop computer workstation setup" },
+    { src: "img/img5.jpg", alt: "Laptop and desktop systems on a desk" },
+    { src: "img/img8.jpg", alt: "Technician installing network equipment" },
+  ];
+
+  const images = [...gallery.querySelectorAll(".gallery-item img")];
+  if (!images.length) return;
+
+  slides.forEach((slide) => {
+    const preload = new Image();
+    preload.src = slide.src;
+  });
+
+  const INTERVAL_MS = 4000;
+  const FADE_MS = 420;
+  let tick = 0;
+  let timer = 0;
+
+  function advance() {
+    tick += 1;
+    images.forEach((img, slot) => {
+      const next = slides[(tick + slot) % slides.length];
+      window.setTimeout(() => {
+        img.classList.add("is-fading");
+        window.setTimeout(() => {
+          img.src = next.src;
+          img.alt = next.alt;
+          img.classList.remove("is-fading");
+        }, FADE_MS);
+      }, slot * 90);
+    });
+  }
+
+  function start() {
+    if (timer) return;
+    timer = window.setInterval(advance, INTERVAL_MS);
+  }
+
+  function stop() {
+    if (!timer) return;
+    window.clearInterval(timer);
+    timer = 0;
+  }
+
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) start();
+          else stop();
+        });
+      },
+      { threshold: 0.15 }
+    );
+    observer.observe(gallery);
+  } else {
+    start();
+  }
+}
+
+setupWorkSlideshow();
