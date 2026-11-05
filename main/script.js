@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "919130012424";
+const WHATSAPP_NUMBER = "919529940087";
 const MENU_MS = 240;
 const PAGE_MS = 320;
 const TRANSITION_KEY = "ue-page-transition";
