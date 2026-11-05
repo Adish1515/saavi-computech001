@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    container_name: universal-enterprises-site
+    ports:
+      - "8080:80"          # open http://localhost:8080  (change 8080 to any free port)
+    volumes:
+      # Live-edit: change files in ./main and just refresh the browser (no rebuild needed)
+      - ./main:/usr/share/nginx/html:ro
+    restart: unless-stopped

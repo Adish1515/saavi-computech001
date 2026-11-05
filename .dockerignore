@@ -1,0 +1,6 @@
+.git
+*.pdf
+*.txt
+README.md
+docker-compose.yml
+Dockerfile
