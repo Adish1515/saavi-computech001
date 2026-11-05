@@ -278,8 +278,8 @@ document.addEventListener("keydown", (event) => {
 
 function setupReveal() {
   const targets = [
-    ...document.querySelectorAll(".block, .enquiry-form, .products, .about-list, .meta-grid"),
-    ...document.querySelectorAll(".card, .meta-card, .about-list li, .facts div"),
+    ...document.querySelectorAll(".block, .enquiry-form, .products, .about-list, .meta-grid, .gallery, .hero-frame, .about-hero-frame"),
+    ...document.querySelectorAll(".card, .meta-card, .about-list li, .facts div, .gallery-item"),
   ];
 
   if (!targets.length) return;
@@ -287,7 +287,7 @@ function setupReveal() {
   const unique = [...new Set(targets)];
   unique.forEach((el, index) => {
     el.classList.add("reveal");
-    if (el.matches(".card, .meta-card, .about-list li, .facts div")) {
+    if (el.matches(".card, .meta-card, .about-list li, .facts div, .gallery-item")) {
       el.style.setProperty("--reveal-delay", `${Math.min(index % 6, 5) * 40}ms`);
     }
   });
