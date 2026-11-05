@@ -1001,11 +1001,11 @@ h1 {
   background: var(--paper-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 0 0 16px;
+  padding: 0;
   box-shadow: var(--shadow);
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: stretch;
   min-height: 100%;
   overflow: hidden;
   transition:
@@ -1025,7 +1025,7 @@ h1 {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--paper-sunken);
-  margin-bottom: 4px;
+  flex-shrink: 0;
 }
 
 .card-media .media-cover {
@@ -1036,17 +1036,32 @@ h1 {
   transform: scale(1.05);
 }
 
-.card .index,
-.card h3,
-.card p,
-.card .text-link {
-  margin-left: 18px;
-  margin-right: 18px;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  flex: 1;
+  padding: 16px 18px 18px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.card .index { margin-top: 14px; }
+.card-body .index {
+  margin: 0 0 8px;
+}
 
-.card .text-link { margin-bottom: 2px; }
+.card-body h3 {
+  margin: 0 0 6px;
+}
+
+.card-body p {
+  margin: 0;
+}
+
+.card-body .text-link {
+  margin-top: auto;
+  padding-top: 14px;
+}
 
 .index {
   margin: 0;
@@ -1064,12 +1079,22 @@ h1 {
   font-weight: 700;
 }
 
+.card-body h3,
+.about-list-body h3 {
+  margin: 0 0 6px;
+}
+
 .card p,
 .products p,
 .about-list p {
   margin: 0;
   color: var(--ink-soft);
   font-size: 0.98rem;
+}
+
+.card-body p,
+.about-list-body p {
+  margin: 0;
 }
 
 .products {
@@ -1438,9 +1463,11 @@ textarea:focus {
   background: var(--paper-raised);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  padding: 0 0 16px;
+  padding: 0;
   box-shadow: var(--shadow);
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
   transition:
     transform var(--motion-fast) var(--ease),
     border-color var(--motion-fast) var(--ease),
@@ -1458,7 +1485,7 @@ textarea:focus {
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: var(--paper-sunken);
-  margin-bottom: 4px;
+  flex-shrink: 0;
 }
 
 .about-list-media .media-cover {
@@ -1469,13 +1496,19 @@ textarea:focus {
   transform: scale(1.05);
 }
 
-.about-list h3,
-.about-list p {
-  margin-left: 18px;
-  margin-right: 18px;
+.about-list-body {
+  padding: 16px 18px 18px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.about-list h3 { margin-top: 12px; }
+.about-list-body h3 {
+  margin: 0 0 6px;
+}
+
+.about-list-body p {
+  margin: 0;
+}
 
 .gallery {
   display: grid;
