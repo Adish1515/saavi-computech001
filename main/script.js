@@ -331,7 +331,7 @@ function setupWorkSlideshow() {
     { src: "img/img11.jpg", alt: "Rows of desktop computers in a lab" },
     { src: "img/img12.jpg", alt: "IT training session in a classroom" },
     { src: "img/img18.jpg", alt: "IT consultation with network diagrams" },
-    { src: "img/img25.jpg", alt: "CCTV security camera" },
+    { src: "img/img40.png", alt: "CCTV security camera" },
     { src: "img/img26.jpg", alt: "CCTV accessories and camera kit" },
     { src: "img/img27.jpg", alt: "CCTV camera mount and install kit" },
     { src: "img/img28.jpg", alt: "Technician refilling a printer ink cartridge" },
