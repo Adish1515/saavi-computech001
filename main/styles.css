@@ -1462,6 +1462,11 @@ textarea:focus {
 
 .footer-col a:hover { color: var(--ink); }
 
+.footer-col a[href^="mailto:"],
+.meta-card a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+}
+
 .float-wa {
   position: fixed;
   right: 16px;
