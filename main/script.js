@@ -81,6 +81,32 @@ function setupPageTransitions() {
 
 setupPageTransitions();
 
+function isSamePageTopLink(anchor) {
+  if (!anchor || !anchor.matches("a.brand, a.wordmark")) return false;
+  if (anchor.target === "_blank") return false;
+  try {
+    const url = new URL(anchor.href, location.href);
+    if (pageFile(url.pathname) !== pageFile(location.pathname)) return false;
+    return !url.hash || url.hash === "#" || url.hash === "#top";
+  } catch {
+    return false;
+  }
+}
+
+document.addEventListener("click", (event) => {
+  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return;
+  }
+  const anchor = event.target.closest("a.brand, a.wordmark");
+  if (!isSamePageTopLink(anchor)) return;
+
+  event.preventDefault();
+  window.scrollTo({
+    top: 0,
+    behavior: reduceMotion ? "auto" : "smooth",
+  });
+});
+
 const form = document.querySelector("#enquiry-form");
 const status = document.querySelector("#form-status");
 

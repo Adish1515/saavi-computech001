@@ -1302,6 +1302,76 @@ textarea:focus {
   transform: scale(0.98);
 }
 
+.btn-wa-mark {
+  --wa-green: #25d366;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #a7afae;
+  box-shadow: none;
+  flex-shrink: 0;
+  transition:
+    color 240ms var(--ease),
+    background 240ms var(--ease),
+    transform 240ms var(--ease),
+    box-shadow 240ms var(--ease);
+}
+
+.btn-wa-mark svg {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+
+.btn.btn-wa-mark:hover,
+.btn-wa-mark:hover {
+  background: transparent;
+  color: var(--wa-green);
+  transform: translateY(-1px) scale(1.08);
+  box-shadow: 0 8px 18px rgba(37, 211, 102, 0.22);
+}
+
+.btn.btn-wa-mark:active,
+.btn-wa-mark:active {
+  background: transparent;
+  color: var(--wa-green);
+  transform: scale(0.96);
+  box-shadow: none;
+}
+
+.mobile-nav .btn.btn-wa-mark {
+  width: 52px;
+  height: 52px;
+  margin: 8px auto 0;
+  padding: 0;
+  color: #a7afae;
+  justify-self: center;
+}
+
+.mobile-nav .btn.btn-wa-mark svg {
+  width: 34px;
+  height: 34px;
+}
+
+.mobile-nav .btn.btn-wa-mark:hover {
+  background: transparent;
+  color: #25d366;
+}
+
+.footer-wa {
+  justify-self: start;
+  margin-top: 2px;
+  color: #7d8685;
+}
+
+.btn.footer-wa:hover,
+.footer-wa:hover {
+  color: var(--wa-green, #25d366);
+}
+
 .btn-solid {
   background: var(--night);
   color: #fff;
